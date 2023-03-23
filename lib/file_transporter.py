@@ -3,6 +3,7 @@ import logging
 from datetime import datetime
 from pathlib import Path
 
+
 def filename_from_path(filename):
   return filename.split("/")[-1]
 
@@ -30,6 +31,6 @@ class FileTransporter(object):
     try:
       Path(filepath).rename(f"{self.target_directory}/{filename_suffix}")
     except FileNotFoundError as e:
-      self._logger.error("Unfortunately the given mp3 file was not found")
+      self._logger.error("Unfortunately the given file was not found")
     finally:
       self._logger.info(f"The file has successfully been moved to {self.target_directory}")
