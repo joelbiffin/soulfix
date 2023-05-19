@@ -29,7 +29,7 @@ class FileTransporter(object):
     filename_suffix = filename_from_path(filepath)
 
     try:
-      Path(filepath).rename(f"{self.target_directory}/{filename_suffix}")
+      return Path(filepath).rename(f"{self.target_directory}/{filename_suffix}")
     except FileNotFoundError as e:
       self._logger.error("Unfortunately the given file was not found")
     finally:

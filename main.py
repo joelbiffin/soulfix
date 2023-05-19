@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+from lib.converter import converter_for
 from lib.file_transporter import FileTransporter
 
 
@@ -36,5 +37,7 @@ if __name__ == "__main__":
 
   transporter = FileTransporter(destination_path=output_directory, logger=logging)
   transporter.create_target_dir()
-  transporter.move_file_to_target(filepath=path_of_file_to_process)
+  destination = transporter.move_file_to_target(filepath=path_of_file_to_process)
+
+  converter_for(destination).convert()
 
